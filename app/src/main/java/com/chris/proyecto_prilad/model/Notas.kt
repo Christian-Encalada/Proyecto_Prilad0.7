@@ -1,7 +1,3 @@
 package com.chris.proyecto_prilad.model
 
-data class Notas(
-    var fecha: String,
-    var materia: String,
-    var tarea: String
-)
+data class Notas(val fecha: String, val materia: String, val tarea: String)

@@ -14,7 +14,7 @@
     <string name="uID_Usuario">UID del usuario</string>
     <string name="correo_Usuario">Correo de usuario</string>
     <string name="fecha_hora_actual">fecha y hora actual</string>
-    <string name="input_materia">Materia</string>
+    <string name="input_producto">Producto</string>
     <string name="input_tareas">Tareas</string>
     <string name="btn_Calendario">Calendario</string>
     <string name="fecha">00/00/000</string>

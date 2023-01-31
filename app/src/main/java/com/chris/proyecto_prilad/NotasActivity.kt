@@ -16,7 +16,7 @@ private var db = FirebaseFirestore.getInstance()
 class NotasActivity : AppCompatActivity() {
     private var selectedDate: String = ""
     lateinit var calendarView: CalendarView
-    lateinit var inputMateria: EditText
+    lateinit var inputProducto: EditText
     lateinit var inputTareas: EditText
 
 
@@ -26,12 +26,7 @@ class NotasActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_notas)
 
-        //pasar a las notas
-        val btn: Button = findViewById(R.id.btn_Entrar)
-        btn.setOnClickListener {
-            val intent: Intent = Intent(this, ListaNotas:: class.java)
-            startActivity(intent)
-        }
+
 
         // calendario test
 
@@ -47,23 +42,25 @@ class NotasActivity : AppCompatActivity() {
         }
 
         btnAgregarNota.setOnClickListener {
-            inputMateria = findViewById(R.id.id_input_materia)
+            inputProducto = findViewById(R.id.input_producto)
             inputTareas = findViewById(R.id.input_tareas)
 
-            val materia = inputMateria.text.toString().trim()
+            val producto = inputProducto.text.toString().trim()
             val tareas = inputTareas.text.toString().trim()
 
-            if (materia.isNotEmpty() && tareas.isNotEmpty()) {
+            if (producto.isNotEmpty() && tareas.isNotEmpty()) {
                 val nota = hashMapOf(
                     "fecha" to selectedDate,
-                    "materia" to materia,
+                    "producto" to producto,
                     "tareas" to tareas
                 )
 
                 db.collection("notas")
                     .add(nota)
                     .addOnSuccessListener {
-                        // Nota agregada con éxito
+                        Toast.makeText(this, "Nota guardada correctamente", Toast.LENGTH_SHORT).show()
+
+
                     }
                     .addOnFailureListener { exception ->
                         // Error al agregar la nota
