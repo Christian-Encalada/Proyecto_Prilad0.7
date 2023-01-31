@@ -8,10 +8,10 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class Pantalla_2 : AppCompatActivity() {
-
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var authStateListener: FirebaseAuth.AuthStateListener
 
@@ -47,7 +47,7 @@ class Pantalla_2 : AppCompatActivity() {
                     Toast.makeText(baseContext, "Por favor proporciona un correo electrónico y una contraseña.", Toast.LENGTH_SHORT).show()
                 }
                 singIn(txtemail.text.toString(), txtpass.text.toString())
-                val intent: Intent = Intent(this, CalendarioMain::class.java)
+                val intent: Intent = Intent(this, NotasActivity::class.java)
                 startActivity(intent)
             }
         }
@@ -61,7 +61,7 @@ class Pantalla_2 : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = firebaseAuth.currentUser
-                    Toast.makeText(baseContext, user?.uid.toString(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(baseContext, "INICIANDO SESION", Toast.LENGTH_SHORT).show()
                     // aqui vamos a ir a la segunda acivity
                 }
                 else
